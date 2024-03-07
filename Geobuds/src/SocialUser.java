@@ -1,13 +1,13 @@
 import java.util.ArrayList;
 
 public class SocialUser extends User{
-  private ArrayList<User> friendsList;
+  private ArrayList<SocialUser> friendsList;
 
-  private boolean addFriend(User user){
+  private boolean addFriend(SocialUser user){
     
   }
 
-  private boolean removeFriend(User user){
+  private boolean removeFriend(SocialUser user){
     
   }
 
