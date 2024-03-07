@@ -128,7 +128,7 @@ public class User {
      * @exception com.sun.jdi.InvalidTypeException if the user is not allowed to receive the message
      * @return true if message was received successfully
      */
-    public boolean receiveMessage() {
+    public boolean receiveMessage(Message message) {
         return true;
     }
 
