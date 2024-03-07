@@ -20,13 +20,6 @@ public class User {
         return name;
     }
 
-<<<<<<< HEAD
-    public void setName(String name) {
-        this.name = name;
-    }
-
-=======
->>>>>>> 08e6345 (first commit)
     public int getUid() {
         return uid;
     }
@@ -34,28 +27,15 @@ public class User {
     public String[] getBio() {
         return bio;
     }
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> 08e6345 (first commit)
     public double getLongitude() {
         return longitude;
     }
 
-<<<<<<< HEAD
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-=======
->>>>>>> 08e6345 (first commit)
     public double getLatitude() {
         return latitude;
     }
 
-<<<<<<< HEAD
-=======
     public ArrayList<User> getBlockedUsers() {
         return blockedUsers;
     }
@@ -76,21 +56,10 @@ public class User {
         this.longitude = longitude;
     }
 
->>>>>>> 08e6345 (first commit)
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
-<<<<<<< HEAD
-    public Object[] getBlockedUsers() {
-        return blockedUsers;
-    }
-
-    public void setBlockedUsers(Object[] blockedUsers) {
-        this.blockedUsers = blockedUsers;
-    }
-
-=======
     public void setBlockedUsers(ArrayList<User> blockedUsers) {
         this.blockedUsers = blockedUsers;
     }
@@ -140,5 +109,4 @@ public class User {
     }
 
 
->>>>>>> 08e6345 (first commit)
 }
