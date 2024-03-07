@@ -21,9 +21,7 @@ public class User {
         return name;
     }
 
-    public int getUid() {
-        return uid;
-    }
+    public int getUid() { return uid; }
 
     public String[] getBio() {
         return bio;
