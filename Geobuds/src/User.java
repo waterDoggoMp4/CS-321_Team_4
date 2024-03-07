@@ -64,49 +64,47 @@ public class User {
         this.blockedUsers = blockedUsers;
     }
 
-    public boolean updateBio(){
+    public boolean updateBio() {
         return true;
     }
 
-    public boolean updateName(){
+    public boolean updateName() {
         return true;
     }
 
-    public boolean logIn(){
+    public boolean logIn() {
         return true;
     }
 
-    public boolean logOut(){
+    public boolean logOut() {
         return true;
     }
 
-    public boolean updateProfilePicture(){
+    public boolean updateProfilePicture() {
         return true;
     }
 
-    public boolean messageUser(){
+    public boolean messageUser() {
         return true;
     }
 
-    public boolean receiveMessage(){
+    public boolean receiveMessage() {
         return true;
     }
 
-    public boolean blockUser(){
+    public boolean blockUser() {
         return true;
     }
 
-    public boolean unblockUser(){
+    public boolean unblockUser() {
         return true;
     }
 
-    public boolean post(){
+    public boolean post() {
         return true;
     }
 
-    public boolean deletePost(){
+    public boolean deletePost() {
         return true;
     }
-
-
 }
