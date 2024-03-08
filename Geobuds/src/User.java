@@ -208,7 +208,7 @@ public class User {
     public boolean blockUser(User user) {
         ArrayList<User> blockedUsers = getBlockedUsers();
 
-        if (blockedUsers.contains(user)) {
+        if (user == null || blockedUsers.contains(user)) {
             return false;
         }
 

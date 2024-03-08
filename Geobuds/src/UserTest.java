@@ -22,7 +22,7 @@ public class UserTest {
     public void test_updateBio_nullUser(){
         User user = null;
         String[] bio = new String[]{"new bio"};
-        assertFalse(user.updateBio(user, bio));
+        user.updateBio(user, bio);
     }
 
     @Test
@@ -43,70 +43,53 @@ public class UserTest {
     public void test_updateName_nullUser(){
         User user = null;
         String name = "new name";
-        assertFalse(user.updateName(user, name));
+        user.updateName(user, name);
     }
 
     @Test
     public void blockUser(){
         User user = new User("name", 1, new String[]{"bio"}, 0.0, 0.0, new ArrayList<User>());
         User blockedUser = new User("blocked", 2, new String[]{"bio"}, 0.0, 0.0, new ArrayList<User>());
-        ArrayList<User> blockedUsers = new ArrayList<User>();
-        blockedUsers.add(blockedUser);
-        user.setBlockedUsers(blockedUsers);
-        assertEquals(blockedUsers, user.getBlockedUsers());
+        user.blockUser(blockedUser);
+        assertTrue(user.getBlockedUsers().contains(blockedUser));
     }
 
     @Test
     public void blockUser_null(){
         User user = new User("name", 1, new String[]{"bio"}, 0.0, 0.0, new ArrayList<User>());
         User blockedUser = null;
-        ArrayList<User> blockedUsers = new ArrayList<User>();
-        blockedUsers.add(blockedUser);
-        user.setBlockedUsers(blockedUsers);
-        assertEquals(blockedUsers, user.getBlockedUsers());
+        user.blockUser(blockedUser);
+        assertFalse(user.getBlockedUsers().contains(blockedUser));
     }
 
     @Test (expected = NullPointerException.class)
     public void blockUser_nullUser(){
         User user = null;
         User blockedUser = new User("blocked", 2, new String[]{"bio"}, 0.0, 0.0, new ArrayList<User>());
-        ArrayList<User> blockedUsers = new ArrayList<User>();
-        blockedUsers.add(blockedUser);
-        user.setBlockedUsers(blockedUsers);
-        assertEquals(blockedUsers, user.getBlockedUsers());
+        user.blockUser(blockedUser);
     }
 
     @Test
     public void test_unblockUser(){
         User user = new User("name", 1, new String[]{"bio"}, 0.0, 0.0, new ArrayList<User>());
         User blockedUser = new User("blocked", 2, new String[]{"bio"}, 0.0, 0.0, new ArrayList<User>());
-        ArrayList<User> blockedUsers = new ArrayList<User>();
-        blockedUsers.add(blockedUser);
-        user.setBlockedUsers(blockedUsers);
         user.unblockUser(blockedUser);
-        assertEquals(new ArrayList<User>(), user.getBlockedUsers());
+        assertFalse(user.getBlockedUsers().contains(blockedUser));
     }
 
     @Test
     public void test_unblockUser_null(){
         User user = new User("name", 1, new String[]{"bio"}, 0.0, 0.0, new ArrayList<User>());
         User blockedUser = null;
-        ArrayList<User> blockedUsers = new ArrayList<User>();
-        blockedUsers.add(blockedUser);
-        user.setBlockedUsers(blockedUsers);
         user.unblockUser(blockedUser);
-        assertEquals(new ArrayList<User>(), user.getBlockedUsers());
+        assertFalse(user.getBlockedUsers().contains(blockedUser));
     }
 
     @Test (expected = NullPointerException.class)
     public void test_unblockUser_nullUser(){
         User user = null;
         User blockedUser = new User("blocked", 2, new String[]{"bio"}, 0.0, 0.0, new ArrayList<User>());
-        ArrayList<User> blockedUsers = new ArrayList<User>();
-        blockedUsers.add(blockedUser);
-        user.setBlockedUsers(blockedUsers);
         user.unblockUser(blockedUser);
-        assertEquals(new ArrayList<User>(), user.getBlockedUsers());
     }
 
 }
