@@ -1,9 +1,9 @@
 public class Message {
-    int mid;
+    int messageId;
     String message;
 
     public Message(int mid, String message) {
-        this.mid = mid;
+        this.messageId = mid;
         this.message = message;
     }
 }

@@ -8,4 +8,8 @@ public class ProfessionalUser extends User{
     super(name, uid, bio, longitude, latitude, blockedUsers);
   }
 
+  private void advertise(){
+
+  }
+
 }
