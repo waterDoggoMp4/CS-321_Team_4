@@ -17,48 +17,96 @@ public class User {
         this.blockedUsers = blockedUsers;
     }
 
+    /**
+     * Gets the name of the user
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gets the uid of the user
+     * @return uid
+     */
     public int getUid() { return uid; }
 
+    /**
+     * Gets the bio of the user
+     * @return bio
+     */
     public String[] getBio() {
         return bio;
     }
 
+    /**
+     * Gets the longitude of the user
+     * @return longitude
+     */
     public double getLongitude() {
         return longitude;
     }
 
+    /**
+     * Gets the latitude of the user
+     * @return latitude
+     */
     public double getLatitude() {
         return latitude;
     }
 
+    /**
+     * Gets the blocked users of the user
+     * @return blockedUsers
+     */
     public ArrayList<User> getBlockedUsers() {
         return blockedUsers;
     }
 
+    /**
+     * Sets the name of the user
+     * @param name the name of the user
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Sets the name of the user
+     * @param uid the uid of the user
+     */
     public void setUid(int uid) {
         this.uid = uid;
     }
 
+    /**
+     * Sets the bio of the user
+     * @param bio the bio of the user
+     */
     public void setBio(String[] bio) {
         this.bio = bio;
     }
 
+    /**
+     * Sets the longitude of the user
+     * @param longitude the longitude of the user
+     */
     public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
+    /**
+     * Sets the latitude of the user
+     * @param latitude the latitude of the user
+     */
     public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 
+    /**
+     * Sets the blocked users of the user
+     * @param blockedUsers the blocked users of the user
+     */
     public void setBlockedUsers(ArrayList<User> blockedUsers) {
         this.blockedUsers = blockedUsers;
     }
@@ -71,7 +119,7 @@ public class User {
      *
      * @return true if the bio was updated successfully
      */
-    private boolean updateBio(User user, String[] bio) {
+    public boolean updateBio(User user, String[] bio) {
         if(user == null || bio == null || bio.length == 0) {
             return false;
         }
@@ -87,7 +135,7 @@ public class User {
      *
      * @return true if the name was updated successfully
      */
-    private boolean updateName(User user, String name) {
+    public boolean updateName(User user, String name) {
         if(user == null || name == null || name.isEmpty()) {
             return false;
         }
@@ -157,7 +205,14 @@ public class User {
      * @exception IllegalArgumentException if the user is an invalid user or if the user is already blocked
      * @return true if user was blocked successfully
      */
-    private boolean blockUser(User user) {
+    public boolean blockUser(User user) {
+        ArrayList<User> blockedUsers = getBlockedUsers();
+
+        if (blockedUsers.contains(user)) {
+            return false;
+        }
+
+        blockedUsers.add(user);
         return true;
     }
 
@@ -169,8 +224,15 @@ public class User {
      * @exception IllegalArgumentException if the user is an invalid user or if the user is not blocked
      * @return true if user was unblocked successfully
      */
-    private boolean unblockUser(User user) {
-        return true;
+    public boolean unblockUser(User user) {
+        ArrayList<User> blockedUsers = getBlockedUsers();
+
+        if(blockedUsers.contains(user)){
+            blockedUsers.remove(user);
+            return true;
+        }
+
+        return false;
     }
 
     /**

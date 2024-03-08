@@ -5,6 +5,7 @@ public class SocialUser extends User{
 
   public SocialUser(String name, int uid, String[] bio, double longitude, double latitude, ArrayList<User> blockedUsers) {
     super(name, uid, bio, longitude, latitude, blockedUsers);
+    this.friendsList = new ArrayList<SocialUser>();
   }
 
   /**
@@ -13,7 +14,7 @@ public class SocialUser extends User{
    * @param user friend to be added
    * @return true if the user was added to the friends list
    */
-  private boolean addFriend(SocialUser user){
+  public boolean addFriend(SocialUser user){
     if(user == null) {
       return false;
     }
@@ -27,7 +28,7 @@ public class SocialUser extends User{
    * @param user friend to be removed
    * @return true if the user was removed from the friends list
    */
-  private boolean removeFriend(SocialUser user){
+  public boolean removeFriend(SocialUser user){
     if(user == null) {
       return false;
     }
@@ -41,7 +42,7 @@ public class SocialUser extends User{
    * @param userID id of the friend to be retrieved
    * @return User object of the friend
    */
-  private User getFriend(int userID){
+  public User getFriend(int userID){
     for(SocialUser user : friendsList){
       if(user.getUid() == userID){
         return user;
