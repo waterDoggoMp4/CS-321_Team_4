@@ -1,9 +1,13 @@
+import java.time.LocalDateTime;
+
 public class Message {
-    int messageId;
-    String message;
+    private int messageId;
+    private String message;
+    private LocalDateTime timestamp;
 
     public Message(int mid, String message) {
         this.messageId = mid;
         this.message = message;
+        this.timestamp = LocalDateTime.now();
     }
 }
