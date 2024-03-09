@@ -199,7 +199,7 @@ public class User {
 
     /**
      * REQUIRES: user != null
-     * Blocks another user
+     * Blocks another use
      *
      *
      * @param user the user to block
