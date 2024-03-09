@@ -112,10 +112,10 @@ public class User {
     }
 
     /**
-     * Updates the bio of the user
      * REQUIRES: user != null
      *           bio != null
      *           bio.length > 0
+     * Updates the bio of the user
      *
      * @return true if the bio was updated successfully
      */
@@ -128,10 +128,10 @@ public class User {
     }
 
     /**
-     * Updates the name of the user
      * REQUIRES: user != null
      *           name != null
      *           name.length > 0
+     * Updates the name of the user
      *
      * @return true if the name was updated successfully
      */
@@ -171,10 +171,10 @@ public class User {
     }
 
     /**
-     * Sends a message to another user
-     * Implement message id or message object
      * REQUIRES: user != null
      *           message != null
+     * Sends a message to another user
+     * Implement message id or message object
      *
      * @param user the user to send the message to
      * @param message the message to send
@@ -184,10 +184,10 @@ public class User {
     private boolean messageUser(User user, String message) { return true; }
 
     /**
-     * Receives a message from another user
-     * Implement message id or message object
      * REQUIRES: message != null
      *           message.length > 0
+     * Receives a message from another user
+     * Implement message id or message object
      *
      * @param message id or message object
      * @exception com.sun.jdi.InvalidTypeException if the user is not allowed to receive the message
@@ -198,8 +198,9 @@ public class User {
     }
 
     /**
-     * Blocks another user
      * REQUIRES: user != null
+     * Blocks another user
+     *
      *
      * @param user the user to block
      * @exception IllegalArgumentException if the user is an invalid user or if the user is already blocked
@@ -217,8 +218,8 @@ public class User {
     }
 
     /**
-     * Unblocks another user
      * REQUIRES: user != null
+     * Unblocks another user
      *
      * @param user the user to unblock
      * @exception IllegalArgumentException if the user is an invalid user or if the user is not blocked
@@ -236,9 +237,9 @@ public class User {
     }
 
     /**
+     * REQUIRES: post != null
      * Makes a post
      * Implement post id or post object
-     * REQUIRES: post != null
      *
      * @param post the post to make
      * @exception IllegalArgumentException if the user is not allowed to make the post
@@ -249,9 +250,9 @@ public class User {
     }
 
     /**
+     * REQUIRES: post != null
      * Deletes a post
      * Implement post id or post object
-     * REQUIRES: post != null
      *
      * @param post the post to delete
      * @exception IllegalArgumentException if the user is not allowed to delete the post
