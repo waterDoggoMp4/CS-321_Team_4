@@ -1,15 +1,27 @@
 import java.util.ArrayList;
 
+/**
+ * SocialUser class
+ */
 public class SocialUser extends User{
   private ArrayList<SocialUser> friendsList;
 
-  public SocialUser(String name, int uid, String[] bio, double longitude, double latitude, ArrayList<User> blockedUsers) {
-    super(name, uid, bio, longitude, latitude, blockedUsers);
+    /**
+     * Constructor for SocialUser
+     * @param name full name of the user
+     * @param uid unique id of the user
+     * @param password password of the user
+     * @param bio bio of the user
+     * @param longitude longitude of the user
+     * @param latitude latitude of the user
+     * @param blockedUsers list of blocked users
+     */
+  public SocialUser(String name, int uid, String password,  String[] bio, double longitude, double latitude, ArrayList<User> blockedUsers) {
+    super(name, uid, password, bio, longitude, latitude, blockedUsers);
     this.friendsList = new ArrayList<SocialUser>();
   }
 
   /**
-   * REQUIRES: user != null
    *
    * @param user friend to be added
    * @return true if the user was added to the friends list
@@ -23,7 +35,6 @@ public class SocialUser extends User{
   }
 
   /**
-   * REQUIRES: user != null
    *
    * @param user friend to be removed
    * @return true if the user was removed from the friends list
@@ -37,7 +48,6 @@ public class SocialUser extends User{
   }
 
   /**
-   * REQUIRES: userID > 0
    *
    * @param userID id of the friend to be retrieved
    * @return User object of the friend
