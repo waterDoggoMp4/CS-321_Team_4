@@ -80,7 +80,9 @@ public class Post{
      * @param longitude the longitude to set
      */
     public void setLongitude(double longitude) {
-        this.longitude = longitude;
+        if(longitude <= 180 && longitude >= -180){
+            this.longitude = longitude;
+        }
     }
 
     /**
@@ -94,6 +96,8 @@ public class Post{
      * @param latitude the latitude to set
      */
     public void setLatitude(double latitude) {
-        this.latitude = latitude;
+        if(latitude <= 90 && latitude >= -90){
+            this.latitude = latitude;
+        }
     }
 }
