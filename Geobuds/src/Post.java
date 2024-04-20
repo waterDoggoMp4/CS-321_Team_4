@@ -9,16 +9,18 @@ public class Post{
     private LocalDateTime timestamp;
     private double longitude;
     private double latitude;
-
+    private User user;
 
     /**
      * Constructor for Post
+     * @param user the user making the post
      * @param description description of the post
      * @param postId unique id of the post
      * @param longitude longitude of the post
      * @param latitude latitude of the post
      */
-    public Post(String description, int postId, double longitude, double latitude){
+    public Post(String description, int postId, double longitude, double latitude, user user){
+        this.user = user;
         this.description = description;
         this.postId = postId;
         this.longitude = longitude;
@@ -26,7 +28,20 @@ public class Post{
         this.timestamp = LocalDateTime.now();
     }
 
+    /**
+     * @return the user
+     */
+    public User getUser(){
+        return user;
+    }
 
+    /**
+     * @param user the user making the post
+     */
+    public void setUser(User user){
+        this.user = user;
+    }
+    
     /**
      * @return the description
      */
@@ -99,5 +114,16 @@ public class Post{
         if(latitude <= 90 && latitude >= -90){
             this.latitude = latitude;
         }
+    }
+
+    /**
+     * @param user the user making the post
+     * @return 1 for a professional user that can advertise, else 0
+     */
+    public int canAdvertise(User user){
+        if(user instanceof ProfessionalUser){
+            return 1;
+        }
+        return 0;
     }
 }
