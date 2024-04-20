@@ -46,7 +46,11 @@ public class Message {
      * @param message the message to set
      */
     public void setMessage(String message) {
-        this.message = message;
+        if(message.length <= 250){
+            this.message = message;
+        }
+        else{
+            this.message = message.substring(0,250);
     }
 
     /**
