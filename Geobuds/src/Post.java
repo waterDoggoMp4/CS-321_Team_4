@@ -19,6 +19,7 @@ public class Post{
 	 * @param postId unique id of the post
 	 * @param longitude longitude of the post
 	 * @param latitude latitude of the post
+	 * @exception IllegalArgumentException if longitude and latitude are not valid inputs
 	 */
 	public Post(String title, String description, int postId, double longitude, double latitude){
 		this.title = title; 
@@ -27,7 +28,12 @@ public class Post{
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.timestamp = LocalDateTime.now();
-		this.geohash = GeoFireUtils.getGeoHashForLocation(this.latitude, this.longitude);
+		try {
+			this.geohash = GeoFireUtils.getGeoHashForLocation(this.latitude, this.longitude);
+		}
+		catch (IllegalArgumentException e){
+			throw new IllegalArgumentException("Invalid latitude or longitude for geohashing.", e);
+		}
 	}
 
 	/**
@@ -68,9 +74,16 @@ public class Post{
 
 	/**
 	 * Updates Geohash based on current Longitude and Latitude
+	 * @exception IllegalArgumentException if longitude and latitude are not valid inputs
 	 */
 	public void setGeohash(){
-		this.geohash = GeoFireUtils.getGeoHashForLocation(this.latitude, this.longitude);
+		try{
+			this.geohash = GeoFireUtils.getGeoHashForLocation(this.latitude, this.longitude);
+		}
+		catch (IllegalArgumentException e){
+			this.geohash = null;
+			System.err.println("Error updating geohash: " + e.getMessage());
+		}
 	}
 
 	/**
