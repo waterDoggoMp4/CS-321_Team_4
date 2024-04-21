@@ -4,16 +4,54 @@ import java.time.LocalDateTime;
  * Message class
  */
 public class Message {
+    private User sender;
+    private User reciever;
     private int messageId;
     private String message;
     private LocalDateTime timestamp;
 
-    public Message(int mid, String message) {
+    /**
+     * @param mid the UID for the message
+     * @param message the message contents
+     * @param sender the message sender
+     * @param receiver the message receiver
+     */
+    public Message(int mid, String message, User sender, User receiver) {
+        this.sender = sender;
+        this.receiver = receiver;
         this.messageId = mid;
         this.message = message;
         this.timestamp = LocalDateTime.now();
     }
+    
+    /**
+     * @return the message sender
+     */
+    public int getSender(){
+        return sender;
+    }
 
+    /**
+     * @param sender the message sender
+     */
+    public void setSender(User sender){
+        this.sender = sender;
+    }
+
+    /**
+     * @return the message receiver
+     */
+    public int getReceiver(){
+        return receiver;
+    }
+
+    /**
+     * @param receiver the message receiver
+     */
+    public void setReceiver(User receiver){
+        this.receiver = receiver;
+    }
+    
     /**
      * @return the messageId
      */
