@@ -35,6 +35,8 @@ public class FirestoreOperationsHandler implements FirestoreCallback {
 	@Override
 	public void onFailure(Exception e) {
 		Log.e(TAG, "Operation failed: " + e.getMessage(), e);
+		// For it to be tested on JUnit as well.
+		throw new RuntimeException("Critical failure in Firestore operation", e);
 	}
 }
 

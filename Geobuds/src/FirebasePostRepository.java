@@ -30,7 +30,10 @@ public class FirebasePostRepository implements PostRepository {
 		db.collection("posts").document(post.getId())
 			.set(postFeatures) // Grabs the hash map and adds all its features to the post
 			.addOnSuccessListener(aVoid -> callback.onSuccess(null)); //Successful operation handler
-			.addOnFailureListener(e -> callback.onFailure(e)); //Failed operation handler
+			.addOnFailureListener(e -> {
+				callback.onFailure(e);
+			        throw new RuntimeException("Critical failure in saving post", e);
+			});	//Failed operation handler
 	}
 
 	/**
@@ -46,7 +49,10 @@ public class FirebasePostRepository implements PostRepository {
 					callback.onSuccess(posts); // Pass the fetched posts to onSuccess
 					})
 			.addOnFailureListener(e -> {
-					callback.onFailure(e)}); // Directly call onFailure with the exception;
+
+					callback.onFailure(e);
+					throw new RuntimeException("Critical failure for fetching post", e);
+			}); // Directly call onFailure with the exception;
 	}
 
 
@@ -73,7 +79,12 @@ public class FirebasePostRepository implements PostRepository {
 				List<Post> posts = queryDocumentSnapshots.toObjects(Post.class);
 				callback.onSuccess(posts); // Return the posts found near the specified location
 			})
-			.addOnFailureListener(e -> callback.onFailure(e)); // Handle potential errors
+			.addOnFailureListener(e -> {
+					//Anroid failure log
+					callback.onFailure(e)
+					//Java failure log
+					throw new RuntimeException("Critical failure for fetching post", e);
+			}); // Handle potential errors
 	}
 
 }
