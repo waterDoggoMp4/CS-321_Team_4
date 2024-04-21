@@ -31,7 +31,7 @@ public class User {
      * @param blockedUsers list of blocked users
      */
     public User(String name, int uid, String password, String[] bio, double longitude, double latitude, ArrayList<User> blockedUsers) {
-        this.name = name;
+        setName(name);
         this.uid = uid;
         this.password = password;
         this.bio = bio;
@@ -159,6 +159,9 @@ public class User {
      * @param name the name of the user
      */
     public void setName(String name) {
+        if(name.length > 15){
+            name = name.substring(0,15);
+        }
         this.name = name;
     }
 
