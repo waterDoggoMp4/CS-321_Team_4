@@ -41,12 +41,12 @@ public class FirebasePostRepository implements PostRepository {
 	public void fetchAllPosts(FirestoreCallback callback) {
 		// Fetches all documents from the "posts" collection
 		db.collection("posts").get()
-			.addOnSuccessListener(queryDocumentSnapshots -> 
+			.addOnSuccessListener(queryDocumentSnapshots -> {
 					List<Post> posts = queryDocumentSnapshots.toObjects(Post.class);
 					callback.onSuccess(posts); // Pass the fetched posts to onSuccess
 					})
-			.addOnFailureListener(e ->
-					callback.onFailure(e)); // Directly call onFailure with the exception;
+			.addOnFailureListener(e -> {
+					callback.onFailure(e)}); // Directly call onFailure with the exception;
 	}
 
 
