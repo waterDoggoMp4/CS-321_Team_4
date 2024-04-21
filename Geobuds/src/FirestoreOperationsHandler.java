@@ -1,32 +1,51 @@
+import android.util.Log;
+import java.util.List;
+
 /**
  * Implementation of the FirestoreCallback interface for success and failure handling.
  */
 public class FirestoreOperationsHandler implements FirestoreCallback {
+	private static final String TAG = "FirestoreOperations";
 
 	/**
-	 * Firestore operation success handler.
+	 * Handles successful Firestore operations.
+	 * Logs different messages based on the type of result received.
+	 *
+	 * @param result The result from the Firestore operation, possibly a list of posts.
 	 */
 	@Override
 	public void onSuccess(Object result) {
 		// Case if the result is a list of posts.
 		if (result instanceof List) {
 			List<Post> posts = (List<Post>) result;
-			System.out.println("Fetched " + posts.size() + " posts.");
+			Log.d(TAG, "Fetched " + posts.size() + " posts.");
 		}
-
 		// Case if the result isn't a list.
 		else {
-			System.out.println("Operation was successful.");
+			Log.d(TAG, "Operation was successful; no list returned.");
 		}
 	}
 
 	/**
-	 * Exeception handler for failure and logs the error.
+	 * Handles failures in Firestore operations.
+	 * Logs the error message to better understand what went wrong.
+	 *
+	 * @param e The exception thrown during the Firestore operation.
 	 */
 	@Override
 	public void onFailure(Exception e) {
-		// Error Log
-		System.err.println("Operation failed: " + e.getMessage());
+		Log.e(TAG, "Operation failed: " + e.getMessage(), e);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
 
